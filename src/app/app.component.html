@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}, {{ name }}!
+  </h1>
+  </div>
+  Claims:
+  <pre>{{claims | json}}</pre>
+<h2>Below you can see some data loaded from the server: </h2>
+<pre>{{ results | json}}</pre>
+
+<div>
+  <input type="button" (click)="logoutHandler()" value="Logout" />
+  <input type="button" (click)="getClaims()" value="GetClaims" />
+  <input type="button" (click)="getData()" value="GetData" />
+</div>
+<router-outlet></router-outlet>

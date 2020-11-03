@@ -36,4 +36,18 @@ export class ValuesService {
       return of(null);
     }
   }
+
+
+  hasClaims(){
+    if (this.oauthService.hasValidAccessToken()) {
+      let x = this.http.get(this.serviceUrl+"/hasclaim/scp/api1 openid", { headers: this.getAuthHeader() })
+        .pipe(
+          map(res => res as string[])
+        );
+        console.log("RESPONSE", x);
+      return x;
+    } else {
+      return of(null);
+    }
+  }
 }

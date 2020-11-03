@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       requireHttps: false,
       loginUrl: environment.adfsUrl + '/oauth2/authorize',
       issuer: environment.adfsUrl,
-      scope: "openid profile email allatclaims",
+      scope: "openid api1",
       responseType: 'code',
       oidc: true,
       showDebugInformation: true,
@@ -77,6 +77,11 @@ export class AppComponent implements OnInit {
     if (!claims) return null;
     this.claims = claims;
     return claims.unique_name;
+  }
+
+  public hasClaims(){
+    this.valuesService.hasClaims()
+      .subscribe((data: string[]) => this.results = data);
   }
 
   public logoutHandler(){
